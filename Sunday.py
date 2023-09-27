@@ -33,7 +33,6 @@ intents.message_content = True
 intents.members = True
 
 bot = commands.Bot(command_prefix=commands.when_mentioned, intents=discord.Intents.all())
-BOT_TOKEN = "MTE1NTUyNTYzNzg4OTU5MzQ0Ng.GwDuqj.F7xT0EYbe19RtLdXTA8MxB5mW0_qsepOUB7kKo"
 
 bot = commands.Bot(intents=intents.all())
 
