@@ -39,7 +39,7 @@ bot = commands.Bot(intents=intents.all())
 bot = commands.Bot(command_prefix='.',
                    intents=discord.Intents.all(),
                    status=discord.Status.online,
-                   activity=discord.Activity(type=discord.ActivityType.watching, name="over my family")
+                   activity=discord.Activity(type=discord.ActivityType.watching, name="over the family")
                    )
 
 @bot.event
