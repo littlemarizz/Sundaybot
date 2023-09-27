@@ -50,8 +50,10 @@ async def on_member_join(member):
         description=f"{member.mention} Thank you for joining! We hope you have a wonderful time here! Do head on over to <#1155554547482230867> to verify, and <#1155554613051805756> to get roles.",
         color=0xc7ccea,
     )
+    embed.set_author(name=member.name, icon_url=member.avatar.url)
     embed.set_image(url='https://media.discordapp.net/attachments/1155490739631951954/1155564049514381402/Untitled19_20230924181947.png')
-    await channel.send(embed=embed)
+    embed.set_footer(text=f"You are our {member.guild.member_count}th member!")
+    embed.timestamp = datetime.datetime.now()
 
 @bot.event
 async def on_ready():
