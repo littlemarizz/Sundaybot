@@ -54,6 +54,7 @@ async def on_member_join(member):
     embed.set_image(url='https://media.discordapp.net/attachments/1155490739631951954/1155564049514381402/Untitled19_20230924181947.png')
     embed.set_footer(text=f"You are our {member.guild.member_count}th member!")
     embed.timestamp = datetime.datetime.now()
+    await channel.send(embed=embed)
 
 @bot.event
 async def on_ready():
