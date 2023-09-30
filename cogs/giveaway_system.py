@@ -1,7 +1,6 @@
-from typing import Any, Coroutine
 import nextcord as discord
-from nextcord import Interaction, ui, Role
-from nextcord.ui import View, button, Modal, TextInput, Button
+from nextcord import Interaction, Role
+from nextcord.ui import View, button, Modal, TextInput
 import sqlite3
 
 YN_TO_BOOL = {'Y': True, 'N': False}
@@ -23,7 +22,6 @@ class UIDModal(Modal):
         self.role_entries: int = role_details[1]
 
     async def callback(self, ctx: Interaction):
-        # store the UID along with the user's discord ID in the db
         try:
             if self.role in ctx.user.roles:
                 ga_cursor.execute(f"INSERT INTO {self.table} (discord_id, hsr_uid, entries) VALUES (?, ?, ?)", (ctx.user.id, self.uid.value, self.role_entries))
@@ -45,7 +43,6 @@ class GiveawayView(View):
 
     @button(label="Join", style=discord.ButtonStyle.green)
     async def join(self, view: View, ctx: Interaction):
-        # first we need to find out if the user has the booster role
         if self.uid_required:
             modal = UIDModal(table=self.table, role_details=(self.special_role, self.special_role_entries))
             await ctx.response.send_modal(modal)
@@ -76,9 +73,3 @@ class GiveawayView(View):
     def giveaway_message(self, embed: discord.Embed, message: discord.Message):
         self.embed = embed
         self.msg = message
-
-
-# class GiveawayManageView(View):
-#     def __init__(self, bot):
-#         self.bot = bot
-#         super().__init__(timeout=None)

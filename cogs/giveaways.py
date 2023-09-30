@@ -101,18 +101,6 @@ class Giveaway(commands.Cog):
 
         await ctx.response.send_message(f"Done! Giveaway ID: {giveaway_id}", ephemeral=True)
 
-
-    # @slash_command(name="manage_giveaway", description="Use this to manage an already existing giveaway.")
-    # @has_permissions(administrator=True)
-    # async def manage_giveaway(self, ctx: Interaction, id: str = SlashOption(
-    #     name="id", description="The giveaway ID / message ID of the active giveaway.", required=True
-    # )):
-    #     # NEED TO WORK ON THIS
-    #     giveaway_id = f"ga_{id}"
-    #     giveaway_id = int(id)
-    #     GA_manage_view = GiveawayManageView(self.bot)
-    #     return
-
     @slash_command(name="update_giveaway", description="Use this to update an already existing giveaway.")
     @has_permissions(administrator=True)
     async def update_giveaway(self, ctx: Interaction, id: str = SlashOption(
@@ -135,7 +123,6 @@ class Giveaway(commands.Cog):
             await ctx.response.send_message("Updated the giveaway!", ephemeral=True)
         except:
             await ctx.response.send_message("An error occured! Please make sure you're entering the correct giveaway message ID.", ephemeral=True)
-
 
     @tasks.loop(seconds=2)
     async def giveaway_task(self):
@@ -184,5 +171,3 @@ class Giveaway(commands.Cog):
                     break
 
         return winners
-
-
