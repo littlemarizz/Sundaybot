@@ -102,7 +102,7 @@ class MyView(discord.ui.View):
                     embed = discord.Embed(description=f'Welcome {interaction.user.mention},\n'
                                                        'Thank you for your interest in a partnership, do send us a link to your server and our staff will be with you shortly!',   #Ticket Welcome message
                                                     color=0xb9b6d3)
-                    await ticket_channel.send(embed=embed, view=CloseButton(bot=self.bot))
+                    await ticket_channel.send("<@1155490850189623316>", embed=embed, view=CloseButton(bot=self.bot))
 
                     embed = discord.Embed(description=f'📬 Ticket was Created! Look here --> {ticket_channel.mention}',
                                             color=0xA59ED2)
